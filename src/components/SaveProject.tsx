@@ -118,58 +118,6 @@ const SaveProject: React.FC<SaveProjectProps> = ({ script, analysis, images, onS
         </div>
       )}
 
-      <style jsx>{`
-        .save-project {
-          background: #f8f9fa;
-          border-radius: 10px;
-          padding: 1.5rem;
-          border: 1px solid #e9ecef;
-          margin-top: 2rem;
-        }
-
-        .save-project h3 {
-          margin-bottom: 1rem;
-          color: #333;
-        }
-
-        .no-content-warning {
-          text-align: center;
-          padding: 2rem;
-          color: #666;
-          background: white;
-          border-radius: 8px;
-          border: 1px dashed #e0e0e0;
-        }
-
-        .save-form {
-          background: white;
-          border-radius: 8px;
-          padding: 1.5rem;
-          border: 1px solid #e0e0e0;
-        }
-
-        .content-summary {
-          margin: 1rem 0;
-          padding: 1rem;
-          background: #f8f9fa;
-          border-radius: 5px;
-        }
-
-        .content-summary h4 {
-          margin-bottom: 0.5rem;
-          color: #333;
-        }
-
-        .content-summary ul {
-          margin: 0;
-          padding-left: 1.5rem;
-        }
-
-        .content-summary li {
-          margin-bottom: 0.25rem;
-          color: #666;
-        }
-      `}</style>
     </div>
   );
 };

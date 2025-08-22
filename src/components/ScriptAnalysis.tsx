@@ -336,64 +336,6 @@ Provide insights on structure, visual elements, timing, and production considera
         </div>
       )}
 
-      <style jsx>{`
-        .script-analysis h2 {
-          margin-bottom: 0.5rem;
-          color: #333;
-        }
-
-        .script-analysis p {
-          color: #666;
-          margin-bottom: 1.5rem;
-        }
-
-        .analysis-result {
-          margin-top: 2rem;
-          background: #f8f9fa;
-          border-radius: 10px;
-          padding: 1.5rem;
-          border: 1px solid #e9ecef;
-        }
-
-        .analysis-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-        }
-
-        .analysis-header h3 {
-          margin: 0;
-          color: #333;
-        }
-
-        .analysis-actions {
-          display: flex;
-          gap: 0.5rem;
-        }
-
-        .analysis-content {
-          background: white;
-          border-radius: 8px;
-          padding: 1.5rem;
-          border: 1px solid #e0e0e0;
-          max-height: 500px;
-          overflow-y: auto;
-        }
-
-        .analysis-text {
-          line-height: 1.6;
-          color: #333;
-        }
-
-        .analysis-line {
-          margin-bottom: 0.5rem;
-        }
-
-        .analysis-line:last-child {
-          margin-bottom: 0;
-        }
-      `}</style>
     </div>
   );
 };

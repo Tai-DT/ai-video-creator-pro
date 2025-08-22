@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import ApiKeyManager from './components/ApiKeyManager';
 import ScriptCreation from './components/ScriptCreation';

@@ -43,5 +43,8 @@
     "typescript"
   ],
   "author": "AI Video Creator Pro",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "node-domexception": "1.0.0"
+  }
 }

@@ -392,57 +392,6 @@ ${formData.includeVisualNotes ? '[VISUAL NOTES]: [Camera angles, transitions, et
         </div>
       )}
 
-      <style jsx>{`
-        .script-creation h2 {
-          margin-bottom: 0.5rem;
-          color: #333;
-        }
-
-        .script-creation p {
-          color: #666;
-          margin-bottom: 1.5rem;
-        }
-
-        .generated-script {
-          margin-top: 2rem;
-          background: #f8f9fa;
-          border-radius: 10px;
-          padding: 1.5rem;
-          border: 1px solid #e9ecef;
-        }
-
-        .script-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-        }
-
-        .script-header h3 {
-          margin: 0;
-          color: #333;
-        }
-
-        .script-actions {
-          display: flex;
-          gap: 0.5rem;
-        }
-
-        .script-content {
-          background: white;
-          border-radius: 8px;
-          padding: 1rem;
-          border: 1px solid #e0e0e0;
-        }
-
-        .script-content pre {
-          white-space: pre-wrap;
-          font-family: inherit;
-          line-height: 1.6;
-          margin: 0;
-          color: #333;
-        }
-      `}</style>
     </div>
   );
 };

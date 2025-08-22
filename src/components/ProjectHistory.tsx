@@ -72,56 +72,6 @@ const ProjectHistory: React.FC = () => {
         </div>
       )}
 
-      <style jsx>{`
-        .project-history {
-          padding: 1rem;
-        }
-
-        .project-history h2 {
-          margin-bottom: 1.5rem;
-          color: #333;
-        }
-
-        .empty-state {
-          text-align: center;
-          padding: 2rem;
-          background: #f8f9fa;
-          border-radius: 10px;
-          color: #666;
-        }
-
-        .projects-list {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .project-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1rem;
-          background: white;
-          border: 1px solid #e0e0e0;
-          border-radius: 8px;
-        }
-
-        .project-info h4 {
-          margin: 0 0 0.5rem 0;
-          color: #333;
-        }
-
-        .project-info p {
-          margin: 0.25rem 0;
-          color: #666;
-          font-size: 0.875rem;
-        }
-
-        .project-actions {
-          display: flex;
-          gap: 0.5rem;
-        }
-      `}</style>
     </div>
   );
 };

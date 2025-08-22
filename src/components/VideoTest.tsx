@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleGenAI, PersonGeneration } from '@google/genai';
+import { GoogleGenAI } from '@google/genai';
 
 const VideoTest: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);

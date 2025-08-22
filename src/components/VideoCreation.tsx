@@ -1,6 +1,7 @@
-import React, { useState, useContext, useRef } from 'react';
-import { GoogleGenAI, GenerateVideosParameters } from '@google/genai';
-import { ApiKeyContext } from '../contexts/ApiKeyContext';
+import React, { useState, useRef } from 'react';
+import { GoogleGenAI } from '@google/genai';
+import type { GenerateVideosParameters } from '@google/genai';
+import { useApiKeys } from '../contexts/ApiKeyContext';
 
 interface VideoSettings {
   aspectRatio: '16:9' | '9:16' | '1:1';
@@ -9,6 +10,11 @@ interface VideoSettings {
   generateAudio: boolean;
   resolution: '720p' | '1080p' | '1440p';
   numberOfVideos: number;
+  style: 'cinematic' | 'realistic' | 'artistic' | 'cartoon' | 'anime';
+  quality: 'standard' | 'high' | 'ultra';
+  includeTransitions: boolean;
+  autoGenerateScript: boolean;
+  scriptLanguage: 'Vietnamese' | 'English' | 'Japanese';
 }
 
 interface GeneratedVideo {
@@ -21,7 +27,7 @@ interface GeneratedVideo {
 }
 
 const VideoCreation: React.FC<{ generatedImages: any[]; script: string }> = ({ generatedImages, script }) => {
-  const { apiKey } = useContext(ApiKeyContext);
+  const { getActiveApiKey } = useApiKeys();
   const [prompt, setPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedVideos, setGeneratedVideos] = useState<GeneratedVideo[]>([]);
@@ -90,26 +96,25 @@ const VideoCreation: React.FC<{ generatedImages: any[]; script: string }> = ({ g
     }
 
     // Auto-generate script if enabled and no script provided
-    let finalScript = script;
-    if (videoSettings.autoGenerateScript && !script.trim() && prompt.trim()) {
+    if (settings.autoGenerateScript && !script.trim() && prompt.trim()) {
       try {
         // Generate language-specific script prompt
         let scriptLanguagePrompt = '';
-        switch (videoSettings.scriptLanguage || 'Vietnamese') {
+        switch (settings.scriptLanguage || 'Vietnamese') {
           case 'Vietnamese':
-            scriptLanguagePrompt = `Tạo một kịch bản video ngắn (${videoSettings.durationSeconds} giây) cho: ${prompt}. Viết bằng tiếng Việt.`;
+            scriptLanguagePrompt = `Tạo một kịch bản video ngắn (${settings.durationSeconds} giây) cho: ${prompt}. Viết bằng tiếng Việt.`;
             break;
           case 'English':
-            scriptLanguagePrompt = `Create a short video script (${videoSettings.durationSeconds} seconds) for: ${prompt}. Write in English.`;
+            scriptLanguagePrompt = `Create a short video script (${settings.durationSeconds} seconds) for: ${prompt}. Write in English.`;
             break;
           case 'Japanese':
-            scriptLanguagePrompt = `短いビデオスクリプト（${videoSettings.durationSeconds}秒）を作成してください: ${prompt}. 日本語で書いてください。`;
+            scriptLanguagePrompt = `短いビデオスクリプト（${settings.durationSeconds}秒）を作成してください: ${prompt}. 日本語で書いてください。`;
             break;
           default:
-            scriptLanguagePrompt = `Create a short video script (${videoSettings.durationSeconds} seconds) for: ${prompt}`;
+            scriptLanguagePrompt = `Create a short video script (${settings.durationSeconds} seconds) for: ${prompt}`;
         }
 
-        const scriptResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+        const scriptResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${getActiveApiKey()}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -127,13 +132,12 @@ const VideoCreation: React.FC<{ generatedImages: any[]; script: string }> = ({ g
           })
         });
 
-        if (scriptResponse.ok) {
-          const scriptData = await scriptResponse.json();
-          finalScript = scriptData.candidates[0].content.parts[0].text;
-        }
+                  if (scriptResponse.ok) {
+            // Script generated successfully
+          }
       } catch (error) {
         console.log('Auto-script generation failed, using prompt as script');
-        finalScript = prompt;
+        // Using prompt as script
       }
     }
 
@@ -141,7 +145,7 @@ const VideoCreation: React.FC<{ generatedImages: any[]; script: string }> = ({ g
     setError('');
 
     try {
-      const ai = new GoogleGenAI({ apiKey: apiKey });
+      const ai = new GoogleGenAI({ apiKey: getActiveApiKey() });
 
       const config: GenerateVideosParameters = {
         model: 'veo-2.0-generate-001', // Using Veo 2.0 (working with this API key)
@@ -181,7 +185,7 @@ const VideoCreation: React.FC<{ generatedImages: any[]; script: string }> = ({ g
       
       for (let i = 0; i < videos.length; i++) {
         const video = videos[i];
-        const url = decodeURIComponent(video.video.uri);
+        const url = decodeURIComponent(video.video?.uri || '');
         
         try {
           const response = await fetch(url);
@@ -539,248 +543,6 @@ const VideoCreation: React.FC<{ generatedImages: any[]; script: string }> = ({ g
         )}
       </div>
 
-      <style jsx>{`
-        .video-creation {
-          padding: 20px;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .form-section {
-          margin-bottom: 30px;
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-        }
-
-        .form-section h3 {
-          margin-top: 0;
-          color: #fff;
-        }
-
-        textarea {
-          width: 100%;
-          padding: 15px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.1);
-          color: white;
-          font-size: 16px;
-          resize: vertical;
-        }
-
-        textarea::placeholder {
-          color: rgba(255, 255, 255, 0.7);
-        }
-
-        .image-input-section {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .upload-section {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-
-        .upload-btn, .clear-btn {
-          padding: 10px 20px;
-          border: none;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 14px;
-        }
-
-        .upload-btn {
-          background: #4caf50;
-          color: white;
-        }
-
-        .clear-btn {
-          background: #f44336;
-          color: white;
-        }
-
-        .selected-image {
-          text-align: center;
-          background: rgba(255, 255, 255, 0.05);
-          padding: 15px;
-          border-radius: 8px;
-        }
-
-        .selected-image img {
-          border-radius: 8px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .generated-images h4 {
-          color: #fff;
-          margin-bottom: 10px;
-        }
-
-        .image-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-          gap: 10px;
-        }
-
-        .selectable-image {
-          width: 100%;
-          height: 100px;
-          object-fit: cover;
-          border-radius: 8px;
-          cursor: pointer;
-          border: 2px solid transparent;
-          transition: border-color 0.2s;
-        }
-
-        .selectable-image:hover {
-          border-color: #4caf50;
-        }
-
-        .settings-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 15px;
-        }
-
-        .setting-item {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-        }
-
-        .setting-item label {
-          color: #fff;
-          font-weight: bold;
-        }
-
-        .setting-item input,
-        .setting-item select {
-          padding: 8px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          border-radius: 6px;
-          background: rgba(255, 255, 255, 0.1);
-          color: white;
-        }
-
-        .setting-item input[type="checkbox"] {
-          width: auto;
-          margin-top: 5px;
-        }
-
-        .generate-btn {
-          padding: 15px 30px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-size: 18px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: transform 0.2s;
-        }
-
-        .generate-btn:hover:not(:disabled) {
-          transform: translateY(-2px);
-        }
-
-        .generate-btn:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-
-        .error-message {
-          background: rgba(244, 67, 54, 0.2);
-          border: 2px solid #f44336;
-          color: #ffcdd2;
-          padding: 15px;
-          border-radius: 8px;
-          margin-bottom: 20px;
-        }
-
-        .loading-message {
-          background: rgba(33, 150, 243, 0.2);
-          border: 2px solid #2196f3;
-          color: #bbdefb;
-          padding: 15px;
-          border-radius: 8px;
-          margin-bottom: 20px;
-        }
-
-        .results-section {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-        }
-
-        .video-list {
-          display: grid;
-          gap: 20px;
-        }
-
-        .video-item {
-          background: rgba(255, 255, 255, 0.05);
-          padding: 20px;
-          border-radius: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .video-info h4 {
-          margin-top: 0;
-          color: #fff;
-        }
-
-        .video-info p {
-          margin: 5px 0;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .status-generated {
-          color: #4caf50;
-          font-weight: bold;
-        }
-
-        .status-placeholder {
-          color: #ff9800;
-          font-weight: bold;
-        }
-
-        .status-error {
-          color: #f44336;
-          font-weight: bold;
-        }
-
-        .video-controls {
-          margin-top: 15px;
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          flex-wrap: wrap;
-        }
-
-        .video-player {
-          flex: 1;
-          min-width: 300px;
-          max-width: 100%;
-          border-radius: 8px;
-        }
-
-        .download-btn {
-          padding: 8px 16px;
-          background: #2196f3;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-
-        .download-btn:hover {
-          background: #1976d2;
-        }
-      `}</style>
     </div>
   );
 };

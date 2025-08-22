@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
-import { ApiKeyContext } from '../contexts/ApiKeyContext';
+import { useApiKeys } from '../contexts/ApiKeyContext';
 
 const AudioTest: React.FC = () => {
-  const { apiKey } = useContext(ApiKeyContext);
+  const { getActiveApiKey } = useApiKeys();
   const [prompt, setPrompt] = useState('Speaker 1: Hello! We\'re excited to show you our native speech capabilities. Speaker 2: Where you can direct a voice, create realistic dialog, and so much more.');
   const [isGenerating, setIsGenerating] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -21,7 +21,7 @@ const AudioTest: React.FC = () => {
     setStatus('generating');
 
     try {
-      const ai = new GoogleGenAI({ apiKey: apiKey });
+      const ai = new GoogleGenAI({ apiKey: getActiveApiKey() });
       
       const config = {
         temperature: 1,
@@ -251,165 +251,6 @@ const AudioTest: React.FC = () => {
         </ul>
       </div>
 
-      <style jsx>{`
-        .audio-test {
-          padding: 20px;
-          max-width: 1000px;
-          margin: 0 auto;
-        }
-
-        .form-section {
-          margin-bottom: 30px;
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-        }
-
-        .form-section h3 {
-          margin-top: 0;
-          color: #fff;
-        }
-
-        textarea {
-          width: 100%;
-          padding: 15px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.1);
-          color: white;
-          font-size: 16px;
-          resize: vertical;
-        }
-
-        textarea::placeholder {
-          color: rgba(255, 255, 255, 0.7);
-        }
-
-        .speakers-info {
-          background: rgba(255, 255, 255, 0.05);
-          padding: 15px;
-          border-radius: 8px;
-        }
-
-        .speakers-info p {
-          margin: 5px 0;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .generate-btn {
-          padding: 15px 30px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-size: 18px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: transform 0.2s;
-        }
-
-        .generate-btn:hover:not(:disabled) {
-          transform: translateY(-2px);
-        }
-
-        .generate-btn:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-
-        .error-message {
-          background: rgba(244, 67, 54, 0.2);
-          border: 2px solid #f44336;
-          color: #ffcdd2;
-          padding: 15px;
-          border-radius: 8px;
-          margin-bottom: 20px;
-        }
-
-        .loading-message {
-          background: rgba(33, 150, 243, 0.2);
-          border: 2px solid #2196f3;
-          color: #bbdefb;
-          padding: 15px;
-          border-radius: 8px;
-          margin-bottom: 20px;
-        }
-
-        .results-section {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-          margin-bottom: 20px;
-        }
-
-        .audio-result {
-          background: rgba(255, 255, 255, 0.05);
-          padding: 20px;
-          border-radius: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .status-info p {
-          margin: 5px 0;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .status-success {
-          color: #4caf50;
-          font-weight: bold;
-        }
-
-        .status-placeholder {
-          color: #ff9800;
-          font-weight: bold;
-        }
-
-        .status-error {
-          color: #f44336;
-          font-weight: bold;
-        }
-
-        .audio-controls {
-          margin-top: 15px;
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          flex-wrap: wrap;
-        }
-
-        .audio-player {
-          flex: 1;
-          min-width: 300px;
-        }
-
-        .download-btn {
-          padding: 8px 16px;
-          background: #2196f3;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-
-        .download-btn:hover {
-          background: #1976d2;
-        }
-
-        .info-section {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-        }
-
-        .info-section ul {
-          color: rgba(255, 255, 255, 0.9);
-          padding-left: 20px;
-        }
-
-        .info-section li {
-          margin: 5px 0;
-        }
-      `}</style>
     </div>
   );
 };

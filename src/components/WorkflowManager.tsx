@@ -153,7 +153,7 @@ ${workflowConfig.includeVisualNotes ? '[VISUAL NOTES]: [Camera angles, transitio
       const script = data.candidates[0].content.parts[0].text;
       
       updateStepStatus('script', 'completed', { script });
-      setWorkflowData(prev => ({ ...prev, script }));
+      setWorkflowData((prev: any) => ({ ...prev, script }));
       return script;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Failed to generate script';
@@ -218,7 +218,7 @@ SCENE 2: [Scene description]
       const analysis = data.candidates[0].content.parts[0].text;
       
       updateStepStatus('analysis', 'completed', { analysis });
-      setWorkflowData(prev => ({ ...prev, analysis }));
+      setWorkflowData((prev: any) => ({ ...prev, analysis }));
       return analysis;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Failed to analyze script';
@@ -302,7 +302,7 @@ PROMPT 2: [Detailed English description]
       }));
 
       updateStepStatus('images', 'completed', { images });
-      setWorkflowData(prev => ({ ...prev, images }));
+      setWorkflowData((prev: any) => ({ ...prev, images }));
       return images;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Failed to generate images';
@@ -315,8 +315,6 @@ PROMPT 2: [Detailed English description]
     updateStepStatus('video', 'in-progress');
     
     try {
-      const apiKey = getActiveApiKey();
-      
       // Use the first image as input if available
       const selectedImage = images.length > 0 ? images[0].url : null;
       
@@ -352,7 +350,7 @@ PROMPT 2: [Detailed English description]
       };
 
       updateStepStatus('video', 'completed', { video });
-      setWorkflowData(prev => ({ ...prev, video }));
+      setWorkflowData((prev: any) => ({ ...prev, video }));
       return video;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Failed to generate video';
@@ -682,137 +680,6 @@ PROMPT 2: [Detailed English description]
         </div>
       )}
 
-      <style jsx>{`
-        .workflow-manager {
-          padding: 20px;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .workflow-config {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-          margin-bottom: 20px;
-        }
-
-        .config-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 15px;
-          margin-top: 15px;
-        }
-
-        .workflow-steps {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-          margin-bottom: 20px;
-        }
-
-        .steps-list {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          margin-top: 15px;
-        }
-
-        .step-item {
-          display: flex;
-          align-items: center;
-          padding: 15px;
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .step-item.current {
-          border-color: #4CAF50;
-          background: rgba(76, 175, 80, 0.1);
-        }
-
-        .step-item.completed {
-          border-color: #2196F3;
-          background: rgba(33, 150, 243, 0.1);
-        }
-
-        .step-item.error {
-          border-color: #f44336;
-          background: rgba(244, 67, 54, 0.1);
-        }
-
-        .step-icon {
-          font-size: 24px;
-          margin-right: 15px;
-          min-width: 30px;
-        }
-
-        .step-content h4 {
-          margin: 0 0 5px 0;
-          color: #fff;
-        }
-
-        .step-content p {
-          margin: 0;
-          color: #ccc;
-          font-size: 14px;
-        }
-
-        .step-content .error {
-          color: #ff6b6b;
-        }
-
-        .workflow-actions {
-          text-align: center;
-          margin: 20px 0;
-        }
-
-        .workflow-results {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 20px;
-          border-radius: 10px;
-          margin-top: 20px;
-        }
-
-        .results-summary {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 15px;
-          margin-top: 15px;
-        }
-
-        .result-item {
-          background: rgba(255, 255, 255, 0.05);
-          padding: 15px;
-          border-radius: 8px;
-        }
-
-        .result-item h4 {
-          margin: 0 0 10px 0;
-          color: #fff;
-        }
-
-        .result-item p {
-          margin: 0;
-          color: #ccc;
-          font-size: 14px;
-        }
-
-        .spinner {
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          border: 2px solid #fff;
-          border-radius: 50%;
-          border-top-color: transparent;
-          animation: spin 1s ease-in-out infinite;
-          margin-right: 8px;
-        }
-
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 };
