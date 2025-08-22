@@ -1,0 +1,44 @@
+{
+  "demoScript": "[TITLE]: Hướng Dẫn Nấu Phở Việt Nam\n[MÔ TẢ]: Video hướng dẫn chi tiết cách nấu phở bò truyền thống Việt Nam\n[GIỚI THIỆU]: Xin chào các bạn! Hôm nay chúng ta sẽ học cách nấu món phở bò truyền thống của Việt Nam. Đây là một món ăn rất phổ biến và được yêu thích không chỉ ở Việt Nam mà còn trên toàn thế giới.\n[NỘI DUNG CHÍNH]: Chúng ta sẽ bắt đầu với việc chuẩn bị nguyên liệu: xương bò, thịt bò, bánh phở, gia vị và rau thơm. Tiếp theo là các bước nấu nước dùng, luộc bánh phở, và cuối cùng là cách trình bày món ăn.\n[KẾT THÚC]: Vậy là chúng ta đã hoàn thành món phở bò truyền thống. Hãy thử làm theo và cho tôi biết kết quả nhé! Đừng quên like và subscribe kênh để nhận thêm nhiều video hướng dẫn nấu ăn khác.",
+  
+  "demoAnalysis": "PHÂN TÍCH KỊCH BẢN PHỞ VIỆT NAM:\n\nSCENE 1: Giới thiệu (0:00-0:15)\n- Visual: Người dẫn chương trình đứng trước bàn bếp\n- Camera: Medium shot\n- Props: Bàn bếp, nồi, dụng cụ nấu ăn\n- Colors: Ấm áp, tự nhiên\n\nSCENE 2: Chuẩn bị nguyên liệu (0:15-0:45)\n- Visual: Hiển thị từng nguyên liệu một cách rõ ràng\n- Camera: Close-up shots\n- Props: Xương bò, thịt bò, bánh phở, gia vị\n- Colors: Tươi sáng, tự nhiên\n\nSCENE 3: Nấu nước dùng (0:45-2:00)\n- Visual: Quá trình nấu nước dùng từng bước\n- Camera: Overhead shot + close-up\n- Props: Nồi lớn, lửa, nguyên liệu\n- Colors: Ấm áp, vàng nâu\n\nSCENE 4: Luộc bánh phở (2:00-2:30)\n- Visual: Luộc bánh phở trong nước sôi\n- Camera: Medium shot\n- Props: Nồi nước sôi, bánh phở\n- Colors: Trắng, trong suốt\n\nSCENE 5: Trình bày (2:30-3:00)\n- Visual: Cách trình bày phở đẹp mắt\n- Camera: Top-down shot\n- Props: Tô phở, rau thơm, gia vị\n- Colors: Đa dạng, hấp dẫn",
+  
+  "demoImages": [
+    {
+      "id": "demo-1",
+      "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaMOgIFZp4buHdCBOYW08L3RleHQ+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzY2N2VlYTtzdG9wLW9wYWNpdHk6MSIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM3NjRiYTI7c3RvcC1vcGFjaXR5OjEiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PC9zdmc+",
+      "prompt": "Vietnamese pho cooking scene with traditional ingredients",
+      "description": "Scene 1: Introduction",
+      "status": "placeholder"
+    },
+    {
+      "id": "demo-2", 
+      "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OZ3V54buFbiBMaWHhu4V1PC90ZXh0PjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NjdlZWE7c3RvcC1vcGFjaXR5OjEiIC8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNzY0YmEyO3N0b3Atb3BhY2l0eToxIiAvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==",
+      "prompt": "Fresh ingredients preparation for Vietnamese pho",
+      "description": "Scene 2: Ingredients",
+      "status": "placeholder"
+    },
+    {
+      "id": "demo-3",
+      "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Ow7BuIE7huqF1IER1bmc8L3RleHQ+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzY2N2VlYTtzdG9wLW9wYWNpdHk6MSIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM3NjRiYTI7c3RvcC1vcGFjaXR5OjEiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PC9zdmc+",
+      "prompt": "Cooking broth for Vietnamese pho with traditional spices",
+      "description": "Scene 3: Cooking Broth",
+      "status": "placeholder"
+    },
+    {
+      "id": "demo-4",
+      "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UcsOhbmggQmF5PC90ZXh0PjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NjdlZWE7c3RvcC1vcGFjaXR5OjEiIC8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNzY0YmEyO3N0b3Atb3BhY2l0eToxIiAvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==",
+      "prompt": "Beautiful presentation of Vietnamese pho with herbs and garnishes",
+      "description": "Scene 4: Final Presentation",
+      "status": "placeholder"
+    }
+  ],
+  
+  "demoVideoSettings": {
+    "duration": 3,
+    "transition": "fade",
+    "music": "calm",
+    "quality": "720p",
+    "format": "mp4"
+  }
+}
